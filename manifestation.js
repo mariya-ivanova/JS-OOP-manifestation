@@ -27,17 +27,36 @@ class d3 extends d4 {
     }
 }
 
-let dimension5 = new d5(),
-result = dimension5.manifest();
-// console.log(result);
-document.write(result);
-
+let dimension5 = new d5();
 let dimension4 = new d4();
-result = dimension4.manifest();
-// console.log(result);
-document.write('<br/>' + result);
-
 let dimension3 = new d3();
-result = dimension3.manifest();
-// console.log(result);
-document.write('<br/>' + result);
+
+let select = document.querySelector('#dimension');
+let result = document.querySelector('#result');
+
+select.addEventListener('change', function() {
+    let dimension;
+    switch (this.value) {
+        case "5":
+            dimension = dimension5;
+            break;
+        case "4":
+            dimension = dimension4;
+            break;
+        case "3":
+            dimension = dimension3;
+            break;
+        default:
+            dimension = 0;
+    }
+
+    if(dimension != 0) {
+        result.textContent = dimension.manifest();        
+    }
+    else {
+        result.textContent = "Unknown dimension";
+    }    
+});
+
+
+
